@@ -1,6 +1,4 @@
-<androidx.appcompat.widget.LinearLayoutCompat
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
 
     android:id="@+id/menu"
@@ -10,6 +8,4 @@
     android:gravity="center"
     android:orientation="vertical"
 
-    tools:context=".presentationlayer.MainActivity"
-    >
-</androidx.appcompat.widget.LinearLayoutCompat>
+    tools:context=".presentationlayer.MainActivity"></androidx.appcompat.widget.LinearLayoutCompat>

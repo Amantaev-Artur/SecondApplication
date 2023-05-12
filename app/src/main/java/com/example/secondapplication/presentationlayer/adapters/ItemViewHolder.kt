@@ -6,7 +6,6 @@ import android.view.View.VISIBLE
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.ProgressBar
-import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.squareup.picasso.Callback
 import com.squareup.picasso.Picasso
@@ -14,7 +13,6 @@ import com.example.secondapplication.R
 import com.example.secondapplication.objects.Item
 
 class ItemViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-    protected val value = view.findViewById<TextView>(R.id.value)
     protected val image = view.findViewById<ImageView>(R.id.image)
 
     protected val imageLoader by lazy { Picasso.get() }

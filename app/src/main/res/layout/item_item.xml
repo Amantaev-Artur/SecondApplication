@@ -24,12 +24,6 @@
             android:layout_height="match_parent"
             android:scaleType="centerCrop" />
 
-        <TextView
-            android:id="@+id/value"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:gravity="center" />
-
         <ProgressBar
             android:id="@+id/progressBar_cyclic"
             android:layout_width="match_parent"
