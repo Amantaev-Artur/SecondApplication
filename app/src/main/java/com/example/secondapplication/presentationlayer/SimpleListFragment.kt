@@ -1,5 +1,6 @@
 package com.example.secondapplication.presentationlayer
 
+import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -13,11 +14,11 @@ import com.example.secondapplication.datalayer.IItemAccessor2
 import com.example.secondapplication.datalayer.RetrofitProvider
 import com.example.secondapplication.presentationlayer.adapters.ItemAdapter
 
-class SimpleListFragment : Fragment() {
+class SimpleListFragment(context: Context) : Fragment() {
     protected val provider by lazy { initializeProvider() }
     protected val itemAdapter = ItemAdapter()
 
-    private val accessor = RetrofitProvider().provide().create(IItemAccessor2::class.java)
+    private val accessor = RetrofitProvider(context).provide().create(IItemAccessor2::class.java)
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -48,8 +49,8 @@ class SimpleListFragment : Fragment() {
     companion object {
         protected const val COLUMN_COUNT = 3
 
-        fun newInstance(): SimpleListFragment {
-            return SimpleListFragment()
+        fun newInstance(context: Context): SimpleListFragment {
+            return SimpleListFragment(context)
         }
     }
 }
