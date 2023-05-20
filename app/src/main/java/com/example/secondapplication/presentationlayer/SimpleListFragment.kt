@@ -37,6 +37,7 @@ class SimpleListFragment(context: Context) : Fragment() {
             adapter = itemAdapter
         }
         view.findViewById<Button>(R.id.btn_add).setOnClickListener {
+            // загружаем следующую порцию элементов по кнопке "Load more"
             provider.load {
                 itemAdapter.submitList(it)
             }

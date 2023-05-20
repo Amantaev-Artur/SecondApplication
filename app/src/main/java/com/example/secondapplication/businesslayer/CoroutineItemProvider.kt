@@ -6,15 +6,20 @@ import kotlinx.coroutines.*
 
 class CoroutineItemProvider(private val accessor: IItemAccessor2) {
 	private val scope = CoroutineScope(Dispatchers.Main)
-	private var page = 1
-	private val itemsOnPage = 24
+	private var loadedItems = emptyList<Item>()
+	private var skip = 0
+	private var limit = 24
 
 	fun load(callback: (List<Item>) -> Unit) {
 		scope.launch {
 			try {
-				val result = withContext(Dispatchers.IO) { accessor.items2().subList(0, page * itemsOnPage) }
-				page += 1
-				callback(result)
+//				приходится использовать subList, т.к. апи криво работает с параметром skip
+				val result = withContext(Dispatchers.IO) { accessor.items2(limit).subList(skip, limit) }
+				loadedItems += result
+				callback(loadedItems)
+
+				skip += result.size
+				limit += result.size // приходиться наращивать из-за кривого апи
 			} catch (error: Throwable) {
 				error.printStackTrace()
 			}
