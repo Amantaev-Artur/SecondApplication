@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -34,6 +35,11 @@ class SimpleListFragment(context: Context) : Fragment() {
         view.findViewById<RecyclerView>(R.id.list).apply {
             layoutManager = GridLayoutManager(requireContext(), COLUMN_COUNT)
             adapter = itemAdapter
+        }
+        view.findViewById<Button>(R.id.btn_add).setOnClickListener {
+            provider.load {
+                itemAdapter.submitList(it)
+            }
         }
 
         provider.load {
